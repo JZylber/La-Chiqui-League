@@ -25,7 +25,8 @@ equipos = (
     ("Porto", 0.8, 0.8),
 )
 Tabla_pos = [{'equipo': equipo, 'ptos' : 0, 'gf': 0, 'gc': 0} for equipo, gf, gc in equipos]
- 
+llave = [{'equipo': equipo} for equipo in equipos]
+
 def simular_liga(equipos):  
     n = 1
     i = 0
@@ -48,11 +49,42 @@ def simular_liga(equipos):
             Tabla_pos[n]['gc'] += golesB
             n +=1
         i += 1
-        n = 0
-    Tabla_pos = ordenar_tabla(Tabla_pos) 
+        n = 0 
     for equipo in Tabla_pos:
         print(f"Equipo: {equipo['equipo']}, Puntos:{equipo['ptos']} GF: {equipo['gf']}, GC: {equipo['gc']}")
 
+def simular_llave(equipos):
+    n = 1
+    i = 0
+    while i < len(equipos):
+        while n < len(equipos):
+            golesA, golesB = simular_partido(equipos[i], equipos[n])
+            if golesA > golesB: 
+                llave.remove(llave[i])
+                for a in llave:
+                    print(llave[a])
+            elif golesA < golesB:
+                llave.remove(llave[n])
+                for a in llave:
+                    print(llave[a])
+            else: 
+                while golesA == golesB:
+                    golesA, golesB = penales(equipos[i], equipos[n])
+                    if golesA > golesB: 
+                        llave.remove(llave[i])
+                        for a in llave:
+                            print(llave[a])
+                    elif golesA < golesB:
+                        llave.remove(llave[n])
+                        for a in llave:
+                            print(llave[a])
+            n += 1
+        i = 0
+        n = 0
+    for equipo in Tabla_pos:
+        print(f"Equipo: {equipo['equipo']}, Puntos: {equipo['ptos']}, GF: {equipo['gf']}, GC {equipo['gc']}")
+    
+                
 def validar_equipo(equipo):
     assert (type(equipo) == tuple or type(equipo) == list) and len(equipo)== 3, f"El equipo debe ser una lista o tupla de 3 elementos, no {equipo}"
     _, pA, pB  = equipo
@@ -79,6 +111,14 @@ def simular_partido(equipoA, equipoB):
     golesB = poisson.rvs(lambdaB, size=1)[0]
     return golesA, golesB
 
+def penales(equipoA, equipoB, cantidad = 5):
+    validar_equipos([equipoA, equipoB])
+    _,ataqueA,defensaA = equipoA
+    _,ataqueB,defensaB = equipoB
+    golesA = binom.rvs(cantidad, 1 - defensaB/4 - (1 - ataqueA/1)/4, size=1)[0]
+    golesB = binom.rvs(cantidad, 1 - defensaA/4 - (1 - ataqueB/1)/4, size=1)[0]
+    return golesA, golesB
+
 def orden_en_tabla(equipo):
     _, puntos, GF, GC = equipo
     return puntos, GF - GC, GF
@@ -86,4 +126,4 @@ def orden_en_tabla(equipo):
 def ordenar_tabla(tabla):
     return sorted(tabla, key=orden_en_tabla, reverse=True)
 
-simular_liga(equipos)
+simular_llave(equipos)
