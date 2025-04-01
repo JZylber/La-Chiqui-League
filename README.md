@@ -1,4 +1,4 @@
-# La oficina del Chiqui
+# La Chiqui League
 
 ## Instalación
 
