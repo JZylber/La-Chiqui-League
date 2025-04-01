@@ -67,20 +67,29 @@ Obviamente pueden (y se espera) que reutilicen las funciones de la parte A y B. 
 
 ### Parte D: Por el 10
 
-Para llegar al 10, tiene que hacer una parte de experimentación, más *a lo chona*. Para esto, hay que dejar los `.py` y moverse a notebooks, osea, `.ipynb`.
+Con los siguientes equipos, ejecutar 500 veces tanto el torneo de llaves como torneo de liga. Contabilizar los ganadores, es decir, contar cuantas veces ganó cada equipo en cada sistema. **Cuenten por separado los ganadores de la liga de los ganadores de las llaves**.
 
-Antes de arrancar, planteense algunas hipótesis. Algunas preguntas orientadoras: ¿Qué esperan que pase en cada sistema? ¿Quiénes son los que ganan más seguido? ¿Como afectan ataque y defensa en los partidos y torneos?
+```python
+equipos = [
+    ("Colón",0.8,0.75),
+    ("Ferro",0.7,0.65),
+    ("Defensores de Belgrano",0.75,0.7),
+    ("Quilmes",0.6,0.6),
+    ("All Boys",0.5,0.6),
+    ("Chacarita",0.4,0.45),
+    ("Arsenal",0.4,0.3),
+    ("Chaco For Ever",0.3,0.4),
+]
+```
 
-Corran los sistemas reiteradas veces (más de 100), y con equipos apropiados para la hipótesis planteada. Registren lo observado, y vean que ocurrió con sus hipótesis.
+Luego de correr ambos sistemas 500 veces y contar los ganadores, responder como comentarios al final del código las siguientes preguntas:
 
-**Tienen que registrar la experimentación**. La experimentación se debe registrar como bloques markdown del notebook, y deben estar si o si:
-- Hipótesis de que creen que va a pasar (no hace falta que sea súper formal, alcanza con que digan que creen que va a pasar).
-- Observaciones contrastadas con lo esperado. 
-
-Realizar **al menos** 3 experimentos distintos.
+1. ¿Ganaron los mismos equipos en ambos sistemas? ¿O hay equipos que les va mejor en un sistema que el otro?
+2. ¿Cómo les va a los equipos chicos (de menor ataque y defensa) en ambos sistemas?
+3. ¿Podrían concluir algo de la comparación entre ambos sistemas?
 
 ## Entrega
-La entrega se hace pusheando al repositorio creado por github classroom, y enviando el hash del commit en una entrega del campus.
+La entrega se hace pusheando al repositorio creado por github classroom, y **enviando el hash del commit en una entrega del campus**.
 
 ## Evaluación
 Se va a evaluar por código funcional y legible para otras personas. **Hay reentrega**. En la reentrega pueden corregir y agregar partes. La nota depende de lo que hayan llegado a hacer:
