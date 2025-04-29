@@ -29,7 +29,7 @@ def simular_partido(equipoA, equipoB):
     lambdaB = plambda(ataqueB, defensaA)
     golesA = poisson.rvs(lambdaA, size=1)[0]
     golesB = poisson.rvs(lambdaB, size=1)[0]
-    return golesA, golesB
+    return int(golesA), int(golesB)
 
 def penales(equipoA,equipoB, cantidad = 5):
     validar_equipos([equipoA, equipoB])
@@ -39,7 +39,7 @@ def penales(equipoA,equipoB, cantidad = 5):
     _,ataqueB,defensaB = equipoB
     golesA = binom.rvs(cantidad, 1 - defensaB/4 - (1 - ataqueA/1)/4 , size=1)[0]
     golesB = binom.rvs(cantidad, 1 - defensaA/4 - (1 - ataqueB/1)/4 , size=1)[0]
-    return golesA, golesB
+    return int(golesA), int(golesB)
 
 def orden_en_tabla(equipo):
     nombre,puntos,GF,GC = equipo
