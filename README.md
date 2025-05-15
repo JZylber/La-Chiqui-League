@@ -60,8 +60,8 @@ Realizar una función que, dado un conjunto de equipos, simule un campeonato de 
 
 Ahora, hagamos la copa de liga argentina, que es una mezcla de los dos sistemas. Funciona de la siguiente forma:
 
-1. Se hacen 2 grupos de 14 equipos, en donde juegan todos contra todos 1 partido (igual que la Parte A)
-2. El top 4 de cada grupo juega luego un torneo de llaves por eliminación. Quien juega contra quien está determinado por el orden en que salieron en las mini ligas.
+1. Se hacen 2 grupos de 15 equipos, en donde juegan todos contra todos 1 partido (igual que la Parte A)
+2. El top 8 de cada grupo juega luego un torneo de llaves por eliminación. Quien juega contra quien está determinado por el orden en que salieron en las mini ligas.
 
 Obviamente pueden (y se espera) que reutilicen las funciones de la parte A y B. Probar que funcione. Para más información, **Googleen**.
 
